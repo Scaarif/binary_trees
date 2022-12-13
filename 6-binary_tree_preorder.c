@@ -2,7 +2,7 @@
 
 /**
  * binary_tree_preorder - goes through a binary tree using
- * pre-order trversal
+ * pre-order trversal, also referred to as: NLR
  * @tree: pointer to the root node of the tree to traverse
  * @func: pointer to a function to be called for each node,
  * takes the value of the node as a parameter
