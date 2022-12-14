@@ -19,4 +19,5 @@ size_t binary_tree_size(const binary_tree_t *tree)
 	right = binary_tree_size(tree->right);
 	/* add the current node to the sum  */
 	return (left + 1 + right);
+	/* same as calling the fns directly in the return + 1 */
 }
