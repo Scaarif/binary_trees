@@ -15,7 +15,7 @@ size_t get_height(const binary_tree_t *tree)
 	/* get the sub-tree depths */
 	l_height = get_height(tree->left);
 	r_height = get_height(tree->right);
-	/* take the larger (deeper) of the two, add root node */
+	/* take the larger (deeper) of the two, add current node */
 	if (l_height > r_height)
 		return (l_height + 1);
 	return (r_height + 1); /* otherwise */
@@ -30,5 +30,6 @@ size_t get_height(const binary_tree_t *tree)
  */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
+	/* exclude start node from measurement */
 	return (get_height(tree) - 1);
 }
