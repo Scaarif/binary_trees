@@ -21,6 +21,8 @@ typedef struct binary_tree_s
 	struct binary_tree_s *right;
 } binary_tree_t;
 
+typedef struct binary_tree_s bst_t;
+
 /* queue structures */
 
 /**
@@ -71,6 +73,8 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
 int binary_tree_is_complete(const binary_tree_t *tree);
 int binary_tree_is_bst(const binary_tree_t *tree);
+
+bst_t *bst_insert(bst_t **tree, int value);
 
 
 #endif /* _BINARY_TREES_H_ */
