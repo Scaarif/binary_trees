@@ -19,20 +19,17 @@ bst_t *bst_insert(bst_t **tree, int value)
 		*tree = new;
 		return (new);
 	}
-	/* else, find the proper location for new node */
 	else
 	{
 		curr = *tree;
 		while (1)
 		{
 			parent = curr;
-			/* check if value already in tree */
 			if (value == parent->n)
 				return (NULL);
 			else if (value < parent->n) /* into left sub-tree*/
 			{
 				curr = curr->left;
-				/* insert */
 				if (curr == NULL)
 				{
 					new = binary_tree_node(parent, value);
@@ -43,7 +40,6 @@ bst_t *bst_insert(bst_t **tree, int value)
 			else /* into right sub-tree */
 			{
 				curr = curr->right;
-				/* insert */
 				if (curr == NULL)
 				{
 					new = binary_tree_node(parent, value);
