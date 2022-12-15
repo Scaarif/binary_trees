@@ -37,6 +37,7 @@ int enqueue(queue_t *queue, const binary_tree_t *node)
 		new->node = (binary_tree_t *)node;
 		new->next = NULL;
 		/* check if queue is empty */
+		/* printf("enqueue: \n"); */
 		if (queue->rear)
 		{
 			queue->rear->next = new;
@@ -63,9 +64,13 @@ binary_tree_t *dequeue(queue_t *queue)
 	qnode_t *temp;
 	binary_tree_t *node;
 
+	/* printf("dequeue:\n"); */
 	if (queue->front)
 	{
 		temp = queue->front;
+		/* update rear if it points to same node */
+		if (queue->front == queue->rear)
+			queue->rear = NULL;
 		/* update queue->front */
 		queue->front = queue->front->next;
 		node = temp->node;
@@ -115,18 +120,24 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 	{
 		/* add tree(root) to queue */
 		enqueue(queue, tree);
+		/* printf("entering while loop\n"); */
 		while (queue->front) /* queue not empty */
 		{
-			temp = dequeue(queue);
 			/* process current node */
+			temp = dequeue(queue);
 			func(temp->n);
-			/* add current node's children to queue */
+			/* enqueue current node's children if any */
 			if (temp->left)
+			{
 				enqueue(queue, temp->left);
+			}
 			if (temp->right)
+			{
 				enqueue(queue, temp->right);
+			}
 		}
-		/* delete queue */
+		/* printf("left while loop\n"); */
+		/* delete queue once done */
 		delete_queue(queue);
 	}
 }
