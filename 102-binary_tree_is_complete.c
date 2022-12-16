@@ -151,5 +151,6 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 		delete_queue(queue);
 		return (1); /* passes as complete */
 	}
+	delete_queue(queue);
 	return (0); /* tree is NULL */
 }
