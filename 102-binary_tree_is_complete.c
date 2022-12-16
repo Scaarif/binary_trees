@@ -116,10 +116,11 @@ void delete_queue(queue_t *queue)
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
 	binary_tree_t *temp;
-	queue_t *queue = create_queue();
+	queue_t *queue;
 
 	if (tree != NULL)
 	{
+		queue = create_queue();
 		/* add tree(root) to queue */
 		enqueue(queue, tree);
 		/* printf("entering while loop\n"); */
@@ -151,6 +152,5 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 		delete_queue(queue);
 		return (1); /* passes as complete */
 	}
-	delete_queue(queue);
 	return (0); /* tree is NULL */
 }
