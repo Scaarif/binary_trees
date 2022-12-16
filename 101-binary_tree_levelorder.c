@@ -114,10 +114,11 @@ void delete_queue(queue_t *queue)
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
 	binary_tree_t *temp;
-	queue_t *queue = create_queue();
+	queue_t *queue;
 
 	if (tree != NULL && func)
 	{
+		queue = create_queue();
 		/* add tree(root) to queue */
 		enqueue(queue, tree);
 		/* printf("entering while loop\n"); */
@@ -140,5 +141,4 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 		/* delete queue once done */
 		delete_queue(queue);
 	}
-	delete_queue(queue); /* even if tree is null, queue was created */
 }
